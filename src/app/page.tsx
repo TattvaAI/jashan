@@ -1,9 +1,9 @@
 import { Hero } from "@/components/Hero";
-import { VideoGrid } from "@/components/VideoGrid";
+import { FilterableGrid } from "@/components/FilterableGrid";
 import rawData from "@/data.json";
 import type { PortfolioData } from "@/types/portfolio";
 
-const data = rawData as PortfolioData;
+const data = rawData as unknown as PortfolioData;
 
 export default function Page() {
   return (
@@ -15,21 +15,7 @@ export default function Page() {
       />
       
       <div className="space-y-12 md:space-y-24 mt-12">
-        <VideoGrid 
-          title="Showreel" 
-          videos={data.videos.showreel} 
-          aspectRatio="video"
-        />
-        <VideoGrid 
-          title="Long-Form Content" 
-          videos={data.videos.longForm} 
-          aspectRatio="video"
-        />
-        <VideoGrid 
-          title="Short-Form Content" 
-          videos={data.videos.shortForm} 
-          aspectRatio="portrait"
-        />
+        <FilterableGrid videos={data.videos} />
       </div>
     </main>
   );

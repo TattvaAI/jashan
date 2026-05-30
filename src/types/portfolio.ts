@@ -20,16 +20,13 @@ export interface Skills {
 export interface Video {
   id: string;
   type: string;
-  category?: string;
+  format: "landscape" | "portrait";
+  tags: string[];
 }
 
 export interface PortfolioData {
   profile: Profile;
   skills: Skills;
-  videos: {
-    showreel: Video[];
-    longForm: Video[];
-    shortForm: Video[];
-  };
+  videos: Video[];
   contact: Contact[];
 }
