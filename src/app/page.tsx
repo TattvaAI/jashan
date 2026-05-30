@@ -1,6 +1,9 @@
 import { Hero } from "@/components/Hero";
 import { VideoGrid } from "@/components/VideoGrid";
-import data from "@/data.json";
+import rawData from "@/data.json";
+import type { PortfolioData } from "@/types/portfolio";
+
+const data = rawData as PortfolioData;
 
 export default function Page() {
   return (
