@@ -38,9 +38,9 @@ export function Hero({ profile, contact, skills }: HeroProps) {
 
         {/* Title */}
         <div className="space-y-6 max-w-4xl">
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-black uppercase leading-[0.9]">
-            {profile.name}
-            <BadgeCheck className="inline-block ml-4 w-12 h-12 text-primary fill-black -translate-y-3" />
+          <h1 className="flex flex-wrap items-center gap-4 text-6xl md:text-8xl font-black tracking-tighter text-black uppercase leading-[0.9]">
+            <span>{profile.name}</span>
+            <BadgeCheck className="w-12 h-12 md:w-16 md:h-16 text-primary fill-black shrink-0" />
           </h1>
           <p className="text-xl md:text-2xl text-black font-semibold max-w-3xl border-l-8 border-primary pl-6 py-2">
             {profile.bio}
@@ -65,13 +65,18 @@ export function Hero({ profile, contact, skills }: HeroProps) {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 pt-10 w-full sm:w-auto">
-          <Button size="lg" className="h-16 px-10 text-xl font-black uppercase tracking-wider bg-primary text-black border-4 border-black brutal-shadow rounded-none hover:bg-primary transition-all group">
+          <a 
+            href={contact.find(c => c.platform.toLowerCase() === "email")?.href || "#"}
+            className="inline-flex items-center justify-center h-16 px-10 text-xl font-black uppercase tracking-wider bg-primary text-black border-4 border-black brutal-shadow hover:bg-primary transition-all group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black"
+          >
             Hire Me
             <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform" />
-          </Button>
+          </a>
           
           <div className="flex gap-4">
-            {contact.map((c) => (
+            {contact
+              .filter(c => c.platform.toLowerCase() !== "email")
+              .map((c) => (
               <a 
                 key={c.platform}
                 href={c.href} 
