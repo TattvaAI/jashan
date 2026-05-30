@@ -38,9 +38,13 @@ export function Hero({ profile, contact, skills }: HeroProps) {
 
         {/* Title */}
         <div className="space-y-6 max-w-4xl">
-          <h1 className="flex flex-wrap items-center gap-4 text-6xl md:text-8xl font-black tracking-tighter text-black uppercase leading-[0.9]">
-            <span>{profile.name}</span>
-            <BadgeCheck className="w-12 h-12 md:w-16 md:h-16 text-primary fill-black shrink-0" />
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-black uppercase leading-[0.9]">
+            {profile.name.split(" ").slice(0, -1).join(" ")}
+            {profile.name.split(" ").length > 1 && " "}
+            <span className="whitespace-nowrap">
+              {profile.name.split(" ").slice(-1)[0]}
+              <BadgeCheck className="inline-block ml-4 w-12 h-12 md:w-16 md:h-16 text-primary fill-black -translate-y-2 shrink-0" />
+            </span>
           </h1>
           <p className="text-xl md:text-2xl text-black font-semibold max-w-3xl border-l-8 border-primary pl-6 py-2">
             {profile.bio}
