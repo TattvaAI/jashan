@@ -1,0 +1,45 @@
+{
+  "profile": {
+    "name": "Jashan Madaan",
+    "bio": "Hey , I am a Video Editor and a Content Creator ! I will edit your video that will get high engaging views and also gives you Content ideas . So what are you waiting for ? Dm me !",
+    "location": "India",
+    "availability": "Available for work"
+  },
+  "skills": {
+    "niches": ["Short Form Content"],
+    "languages": ["English", "Hindi"],
+    "software": ["Premiere Pro", "After Effects", "DaVinci Resolve"]
+  },
+  "videos": {
+    "showreel": [
+      { "id": "ExjH1GdUQbo", "type": "youtube" }
+    ],
+    "longForm": [
+      { "id": "AirEOAhjBNk", "type": "youtube", "category": "Showreel" }
+    ],
+    "shortForm": [
+      { "id": "fBY6eWw-ZIQ", "type": "youtube", "category": "Educational" },
+      { "id": "fbAp8rJq-9Q", "type": "youtube", "category": "Educational" },
+      { "id": "owChmAYkcbw", "type": "youtube", "category": "Business" },
+      { "id": "6S12Rh4tTi8", "type": "youtube", "category": "Educational" },
+      { "id": "eC0tljlWEcY", "type": "youtube", "category": "Educational" }
+    ]
+  },
+  "contact": [
+    {
+      "platform": "Email",
+      "href": "mailto:jashanmadaan1122@gmail.com",
+      "text": "jashanmadaan1122@gmail.com"
+    },
+    {
+      "platform": "Twitter",
+      "href": "https://x.com/Jashan_Madaan_",
+      "text": "Twitter / X"
+    },
+    {
+      "platform": "Instagram",
+      "href": "https://www.instagram.com/jashanverse/",
+      "text": "Instagram"
+    }
+  ]
+}
