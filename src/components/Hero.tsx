@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BadgeCheck, MapPin, Mail, ArrowRight } from "lucide-react";
+import { BadgeCheck, MapPin, ArrowRight } from "lucide-react";
 import { FaXTwitter, FaInstagram } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import type { Profile, Contact, Skills } from "@/types/portfolio";
+import { Mail } from "lucide-react";
 
 interface HeroProps {
   profile: Profile;
@@ -14,78 +14,63 @@ interface HeroProps {
 }
 
 export function Hero({ profile, contact, skills }: HeroProps) {
-  // Helper to map platform name to its icon
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
       case "twitter":
       case "x":
-        return <FaXTwitter className="w-5 h-5" />;
+        return <FaXTwitter className="w-6 h-6" />;
       case "instagram":
-        return <FaInstagram className="w-5 h-5" />;
+        return <FaInstagram className="w-6 h-6" />;
       default:
-        return <Mail className="w-5 h-5" />;
+        return <Mail className="w-6 h-6" />;
     }
   };
 
   return (
-    <section className="relative w-full py-24 lg:py-32 flex flex-col items-center justify-center text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="container px-4 md:px-6 max-w-4xl flex flex-col items-center space-y-10"
-      >
-        {/* Availability indicator */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-secondary/50 text-xs font-medium uppercase tracking-widest text-muted-foreground"
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-500" />
+    <section className="relative w-full py-24 lg:py-32 flex flex-col items-start justify-center border-b-4 border-black bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxwYXRoIGQ9Ik0wLDBIMjBWMjBIMHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U1ZTVlNSIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==')]">
+      <div className="container px-4 md:px-6 max-w-5xl mx-auto flex flex-col items-start space-y-8">
+        
+        {/* Availability Badge */}
+        <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-black bg-primary font-bold uppercase tracking-widest text-black brutal-shadow transition-all">
+          <span className="w-3 h-3 bg-black rounded-none animate-pulse" />
           {profile.availability}
-        </motion.div>
+        </div>
 
-        {/* Name & Title */}
-        <div className="space-y-6">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground">
+        {/* Title */}
+        <div className="space-y-6 max-w-4xl">
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-black uppercase leading-[0.9]">
             {profile.name}
-            <BadgeCheck className="inline-block ml-3 w-8 h-8 md:w-10 md:h-10 text-primary -translate-y-2" />
+            <BadgeCheck className="inline-block ml-4 w-12 h-12 text-primary fill-black -translate-y-3" />
           </h1>
-          <p className="mx-auto max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
+          <p className="text-xl md:text-2xl text-black font-semibold max-w-3xl border-l-8 border-primary pl-6 py-2">
             {profile.bio}
           </p>
         </div>
 
         {/* Details (Location, Niches) */}
-        <div className="flex flex-wrap items-center justify-center gap-4 text-muted-foreground">
-          <div className="flex items-center gap-1.5 font-medium">
-            <MapPin className="w-4 h-4" />
+        <div className="flex flex-wrap items-center gap-6 text-black font-bold uppercase tracking-wider text-sm">
+          <div className="flex items-center gap-2 border-2 border-black px-4 py-2 bg-white brutal-shadow">
+            <MapPin className="w-5 h-5" />
             <span>{profile.location}</span>
           </div>
-          <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
-          <div className="flex flex-wrap gap-2">
+          
+          <div className="flex flex-wrap gap-4">
             {skills.niches.map((niche) => (
-              <Badge key={niche} variant="secondary" className="bg-transparent border border-border hover:bg-secondary">
+              <div key={niche} className="border-2 border-black px-4 py-2 bg-white brutal-shadow">
                 {niche}
-              </Badge>
+              </div>
             ))}
           </div>
         </div>
 
         {/* CTA Buttons */}
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 pt-8 w-full sm:w-auto items-center"
-        >
-          <Button size="lg" className="h-14 px-8 text-base font-medium rounded-full group">
+        <div className="flex flex-col sm:flex-row gap-6 pt-10 w-full sm:w-auto">
+          <Button size="lg" className="h-16 px-10 text-xl font-black uppercase tracking-wider bg-primary text-black border-4 border-black brutal-shadow rounded-none hover:bg-primary transition-all group">
             Hire Me
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform" />
           </Button>
           
-          <div className="flex gap-2">
+          <div className="flex gap-4">
             {contact.map((c) => (
               <a 
                 key={c.platform}
@@ -93,14 +78,14 @@ export function Hero({ profile, contact, skills }: HeroProps) {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label={c.platform}
-                className="inline-flex items-center justify-center shrink-0 h-14 w-14 rounded-full border border-border bg-transparent hover:bg-secondary text-foreground transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="inline-flex items-center justify-center h-16 w-16 border-4 border-black bg-white text-black brutal-shadow hover:bg-primary transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black"
               >
                 {getSocialIcon(c.platform)}
               </a>
             ))}
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
